@@ -13,6 +13,7 @@
         <div class="message-info">
           <p class="message-user"><%= message.user %></p>
           <p class="message-date"><%= message.added %></p>
+          <a href="/message/<%=message.id%>">Open</a>
         </div>
         <p class="message-text"><%= message.text %></p>
       </div>

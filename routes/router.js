@@ -30,6 +30,7 @@ const messages = [
 router.get("/", (req, res) =>
   res.render("index", { title: "Mini Messageboard", messages: messages })
 );
+
 router.get("/new", (req, res) => res.render("form", { title: "New Message" }));
 router.post("/new", (req, res) => {
   const messageUser = req.body.messageUser;
@@ -41,6 +42,12 @@ router.post("/new", (req, res) => {
     added: formatDate(new Date()),
   });
   res.redirect("/");
+});
+
+router.get("/message/:messageId", (req, res) => {
+  const id = Number(req.params.messageId);
+  const message = messages.find((message) => message.id === id);
+  res.render("details", { title: `Message Details`, message: message });
 });
 
 module.exports = router;

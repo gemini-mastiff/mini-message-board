@@ -43,6 +43,10 @@ body {
   color: grey;
 }
 
+.message-link {
+  font-size: 0.8rem;
+}
+
 /* NEW MESSAGE */
 
 form {

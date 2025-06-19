@@ -5,11 +5,9 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-const indexRouter = require("./routes/indexRouter.js");
-const newMessageRouter = require("./routes/newMessageRouter.js");
+const router = require("./routes/router.js");
 
-app.use("/", indexRouter);
-app.use("/new", newMessageRouter);
+app.use("/", router);
 
 const PORT = 8000;
 app.listen(PORT, (req, res) => {

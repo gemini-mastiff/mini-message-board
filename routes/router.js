@@ -1,5 +1,5 @@
 const express = require("express");
-const indexRouter = express.Router();
+const router = express.Router();
 
 const messages = [
   {
@@ -14,6 +14,7 @@ const messages = [
   },
 ];
 
-indexRouter.get("/", (req, res) => res.render("index", { messages: messages }));
+router.get("/", (req, res) => res.render("index", { messages: messages }));
+router.get("/new", (req, res) => res.send("New Messages"));
 
-module.exports = indexRouter;
+module.exports = router;

@@ -1,4 +1,5 @@
 const express = require("express");
+const controller = require("../controllers/controller.js");
 const router = express.Router();
 
 function formatDate(date) {
@@ -27,27 +28,9 @@ const messages = [
   },
 ];
 
-router.get("/", (req, res) =>
-  res.render("index", { title: "Mini Messageboard", messages: messages })
-);
-
-router.get("/new", (req, res) => res.render("form", { title: "New Message" }));
-router.post("/new", (req, res) => {
-  const messageUser = req.body.messageUser;
-  const messageText = req.body.messageText;
-  messages.push({
-    id: messages.length,
-    text: messageText,
-    user: messageUser,
-    added: formatDate(new Date()),
-  });
-  res.redirect("/");
-});
-
-router.get("/message/:messageId", (req, res) => {
-  const id = Number(req.params.messageId);
-  const message = messages.find((message) => message.id === id);
-  res.render("details", { title: `Message Details`, message: message });
-});
+router.get("/", controller.getMessages);
+router.get("/new", controller.getNewMessage);
+router.post("/new", controller.postNewMessage);
+router.get("/message/:messageId", controller.getMessageDetails);
 
 module.exports = router;

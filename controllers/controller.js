@@ -2,6 +2,9 @@ const db = require("../db/queries.js");
 
 async function getMessages(req, res) {
   const messages = await db.getAllMessages();
+  messages.forEach((message) => {
+    message.time = message.time.toISOString().slice(0, 19).replace("T", " ");
+  });
   res.render("index", { title: "Mini Messageboard", messages: messages });
 }
 

@@ -11,8 +11,8 @@
       <% messages.forEach(message => { %>
       <div class="message-container">
         <div class="message-info">
-          <p class="message-user"><%= message.user %></p>
-          <p class="message-date"><%= message.added %></p>
+          <p class="message-user"><%= message.username %></p>
+          <p class="message-date"><%= message.time %></p>
           <a class="message-link" href="/message/<%=message.id%>">Open</a>
         </div>
         <p class="message-text"><%= message.text %></p>

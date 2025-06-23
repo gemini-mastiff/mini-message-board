@@ -23,7 +23,7 @@ async function postNewMessage(req, res) {
 
 async function getMessageDetails(req, res) {
   const id = Number(req.params.messageId);
-  const message = messages.find((message) => message.id === id);
+  const message = await db.getMessage(id);
   res.render("details", { title: `Message Details`, message: message });
 }
 

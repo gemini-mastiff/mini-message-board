@@ -12,12 +12,7 @@ function getNewMessage(req, res) {
 async function postNewMessage(req, res) {
   const messageUser = req.body.messageUser;
   const messageText = req.body.messageText;
-  messages.push({
-    id: messages.length,
-    text: messageText,
-    user: messageUser,
-    added: formatDate(new Date()),
-  });
+  await db.insertMessage(messageText, messageUser);
   res.redirect("/");
 }
 
